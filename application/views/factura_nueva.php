@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 					?>
 				</select>
-				<input type="hidden" id="hdd_productos">
+				<input type="hidden" id="hdd_productos" name="hdd_productos">
 				<input type="number" id="txt_cantidad">
 				<input type="button" class="btn" value="Agregar Producto" onclick="ProductoAgregar();">
 			</div>
