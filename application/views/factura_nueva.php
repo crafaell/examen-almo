@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Agregar Factura</h1>
 
 	<div id="body">
-		<form method="post" action="index.php/FacturaController/factura_agregar">
+		<form id="frm_productos" method="post" action="index.php/FacturaController/factura_agregar">
 			<div>
 				<label>Ingrese el numero de factura</label>
 				<input type="number" name="numero">
@@ -99,12 +99,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						}
 					?>
 				</select>
+				<input type="hidden" id="hdd_productos">
 				<input type="number" id="txt_cantidad">
 				<input type="button" class="btn" value="Agregar Producto" onclick="ProductoAgregar();">
 			</div>
 			<div id="tbl_productos"></div>
 			<div>
-				<input type="submit" value="Guardar">
+				<input type="button" value="Guardar" onclick="FacturaEnviar();">
 			</div>
 		</form>
 	</div>
@@ -155,6 +156,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		});
 		alert('Producto Removido de la factura.');
+	}
+
+	function FacturaEnviar(){
+		$('#hdd_productos').val(productos_agregados);
+		$('#frm_productos').submit();
 	}
 </script>
 </body>

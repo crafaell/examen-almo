@@ -39,6 +39,10 @@ class FacturaModel extends CI_Model {
     }
 
     public function FacturaAgregar(){
+        print_r('<pre>');
+        var_dump($_POST);
+        print_r('</pre>');
+        die;
         $hora = date('Y-m-d');
         $fecha = $_POST['fecha'];
         $cliente = $_POST['cliente'];
