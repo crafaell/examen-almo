@@ -83,14 +83,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div>
 				<label>Seleccione el cliente</label>
 				<select id="slc_cliente" name="cliente">
-					<?php 
-						print_r('<pre>');
-						var_dump($clientes);
-						var_dump($productos);
-						print_r('</pre>');
-						die;
-						foreach ($clientes as $key => $cliente) {
-							echo '<option value="'.$cliente['id'].'">'.$cliente['nombre'].'</option>';
+					<?php
+						if($clientes['res'] == 1){ 
+							foreach ($clientes['clientes'] as $key => $cliente) {
+								echo '<option value="'.$cliente['id'].'">'.$cliente['nombre'].'</option>';
+							}
 						}
 					?>
 				</select>
@@ -99,8 +96,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<label>Seleccione el producto</label>
 				<select id="slc_producto" name="producto">
 					<?php 
-						foreach ($productos as $key => $producto) {
-							echo '<option value="'.$producto['id'].'" data-precio="'.$producto['precio'].'">'.$producto['nombre'].' - '.$producto['precio'].'</option>';
+						if($productos['res'] == 1){
+							foreach ($productos['productos'] as $key => $producto) {
+								echo '<option value="'.$producto['id'].'" data-precio="'.$producto['precio'].'">'.$producto['nombre'].' - '.$producto['precio'].'</option>';
+							}
 						}
 					?>
 				</select>
