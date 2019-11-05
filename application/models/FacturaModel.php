@@ -6,8 +6,30 @@ class FacturaModel extends CI_Model {
         parent::__construct();
         $this->load->database();
         $this->load->model('FacturaModel');
-    } 
+    }
 
+    /*Funcion para sanitizar variables y evitar SQL Injection*/
+    public function _Sanitizar( $var, $type = false ){
+        $sanitize = new stdClass();
+        if ( $type ){
+            foreach ($var as $key => $value) {
+                $sanitize->$key = $this->_clearString( $value );
+            }
+            return $sanitize;
+        } else {
+            return $this->_clearString( $var );
+        }
+    }
+
+    /*Funcion para eliminar diagonales y caracteres especiales como las comillas y convetirlas a su equivalente en html*/
+    private function _clearString( $string ){
+        $string = strip_tags($string);
+        $string = htmlspecialchars($string);
+        $string = addslashes($string);
+        return $string;
+    }
+
+    /*Funcion que obtiene todos los clientes activos*/
     public function ClientesObtener(){
         $query = 'SELECT * 
                     FROM cliente 
@@ -23,6 +45,7 @@ class FacturaModel extends CI_Model {
         return $respuesta;
     }
 
+    /*Funcion que obtiene todos los productos activos*/
     public function ProductosObtener(){
         $query = 'SELECT * 
                     FROM producto 
@@ -31,13 +54,14 @@ class FacturaModel extends CI_Model {
         if ($result->num_rows() > 0) {
             $eventos = $result->result_array();
             $respuesta['res'] = 1;
-            $respuesta['producto'] = $eventos;
+            $respuesta['productos'] = $eventos;
         }else{
             $respuesta['res'] = 0;
         }
         return $respuesta;
     }
 
+    /*Funcion que genera una nueva factura e inserta todos los detalles de factura*/
     public function FacturaAgregar(){
         print_r('<pre>');
         var_dump($_POST);

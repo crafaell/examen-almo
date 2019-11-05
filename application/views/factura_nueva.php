@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php
 						if($clientes['res'] == 1){ 
 							foreach ($clientes['clientes'] as $key => $cliente) {
-								echo '<option value="'.$cliente['id'].'">'.$cliente['nombres'].'</option>';
+								echo '<option value="'.$cliente['id'].'">'.$cliente['nombres'].' '.$cliente['apellidos'].'</option>';
 							}
 						}
 					?>
