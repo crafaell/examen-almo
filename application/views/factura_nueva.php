@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
-<script type="text/javascript" href="/includes/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/includes/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 	var productos_agregados = [];
 	function ProductoAgregar(){
