@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					?>
 				</select>
 				<input type="number" id="txt_cantidad">
-				<input type="button" class="btn" name="Agregar Producto" onclick="ProductoAgregar();">
+				<input type="button" class="btn" value="Agregar Producto" onclick="ProductoAgregar();">
 			</div>
 			<div id="tbl_productos"></div>
 			<div>
@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script type="text/javascript" href="includes/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
-	var productos_agregados[];
+	var productos_agregados = [];
 	function ProductoAgregar(){
 		var cantidad = parseInt($('#txt_cantidad').val());
 		if(cantidad > 0){
