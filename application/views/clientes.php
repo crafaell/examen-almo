@@ -94,9 +94,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>Nombre</th>
-								<th>Precio</th>
-								<th>Cantidad</th>
+								<th>Nombres</th>
+								<th>Apellidos</th>
+								<th>Nit</th>
 								<th>Estado</th>
 								<th>Opciones</th>
 							</tr>
