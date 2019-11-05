@@ -75,15 +75,15 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	#'hostname' => 'us-cdbr-iron-east-05.cleardb.net',
-	#'username' => 'b572a21f30e3e8',
-	#'password' => '75b65a68',
-	#'database' => 'heroku_f31e2653b105234',
+	'hostname' => 'us-cdbr-iron-east-05.cleardb.net',
+	'username' => 'b60d58080c14db',
+	'password' => '10eca743',
+	'database' => 'heroku_f81f22cab270500',
 
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'examen',
+	#'hostname' => 'localhost',
+	#'username' => 'root',
+	#'password' => 'root',
+	#'database' => 'examen',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
