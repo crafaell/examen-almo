@@ -125,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		if(cantidad > 0){
 			var producto_id = $('#slc_producto').val();
 			var producto_nombre = $("#slc_producto option:selected").text();
-			producto_nombre.split('-');
+			producto_nombre = producto_nombre.split('-');
 			producto_nombre = producto_nombre[0];
 			var producto_precio = $("#slc_producto option:selected").attr('data-precio');
 			if(productos_ids.indexOf(producto_id) > -1){
