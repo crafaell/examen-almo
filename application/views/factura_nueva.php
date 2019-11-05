@@ -119,10 +119,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript" src="/includes/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 	var productos_agregados = [];
+	var productos_ids = [];
 	function ProductoAgregar(){
 		var cantidad = parseInt($('#txt_cantidad').val());
 		if(cantidad > 0){
-			productos_agregados.push([$('#slc_producto').val(), $("#slc_producto option:selected").text(), cantidad, $("#slc_producto").attr('data-precio')]);
+			var producto_id = $('#slc_producto').val();
+			var producto_nombre = $("#slc_producto option:selected").text();
+			var producto_precio = $("#slc_producto").attr('data-precio');
+			if(productos_ids.indexOf(producto_id) > -1){
+				alert('Ese producto ya esta agregado');
+			}
+			else{
+				productos_ids.push(producto_id);
+				productos_agregados.push([producto_id, producto_nombre, cantidad, producto_precio]);
+			}
 			var i = 0;
 			var tabla = `<table>
 							<thead>
@@ -154,12 +164,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	function ProductoEliminar(_elemento, _producto_id){
 		$(_elemento).parent().remove();
-		$.each(productos_agregados, function(producto, indice){
-			if(producto[0] == _producto_id){
-				productos_agregados.splice(productos_agregados[indice], 1);
-			}
-		});
-		alert('Producto Removido de la factura.');
+		var existe = productos_ids.indexOf(producto_id);
+		if(existe > -1){
+			productos_agregados.splice(indice, 1);
+			productos_ids.splice(indice, 1);
+			alert('Producto Removido de la factura.');
+		}
 	}
 
 	function FacturaEnviar(){
