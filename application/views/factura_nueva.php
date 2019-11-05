@@ -74,18 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<form id="frm_productos" method="post" action="index.php/FacturaController/factura_agregar">
 			<div>
 				<label>Ingrese el numero de factura</label>
-				<input type="number" name="numero">
+				<input type="number" name="numero" id="txt_numero">
 			</div>
 			<div>
 				<label>Seleccione la fecha de la factura</label>
-				<input type="date" name="fecha">
+				<input type="date" name="fecha" id="txt_fecha">
 			</div>
 			<div>
 				<label>Seleccione el cliente</label>
 				<select id="slc_cliente" name="cliente">
 					<?php 
 						foreach ($clientes as $key => $cliente) {
-							echo '<option value="'+$cliente['id']+'">'+$cliente['nombre']+'</option>';
+							echo '<option value="'.$cliente['id'].'">'.$cliente['nombre'].'</option>';
 						}
 					?>
 				</select>
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<select id="slc_producto" name="producto">
 					<?php 
 						foreach ($productos as $key => $producto) {
-							echo '<option value="'+$producto['id']+'" data-precio="'+$producto['precio']+'">'+$producto['nombre']+' - '+$producto['precio']+'</option>';
+							echo '<option value="'.$producto['id'].'" data-precio="'.$producto['precio'].'">'.$producto['nombre'].' - '.$producto['precio'].'</option>';
 						}
 					?>
 				</select>
@@ -159,8 +159,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	function FacturaEnviar(){
-		$('#hdd_productos').val(productos_agregados);
-		$('#frm_productos').submit();
+		var numero = $('#txt_numero').val();
+		var fecha = $('#txt_fecha').val();
+		if(numero != '' && fecha !='' && productos_agregados.length > 0){
+			$('#hdd_productos').val(productos_agregados);
+			$('#frm_productos').submit();
+		}
+		else{
+			alert('Ingrese el numero de factura y la fecha. Debe seleccionar al menos un producto.');
+		}
 	}
 </script>
 </body>
