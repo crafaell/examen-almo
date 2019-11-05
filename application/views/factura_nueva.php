@@ -84,6 +84,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<label>Seleccione el cliente</label>
 				<select id="slc_cliente" name="cliente">
 					<?php 
+						print_r('<pre>');
+						var_dump($clientes);
+						var_dump($productos);
+						print_r('</pre>');
+						die;
 						foreach ($clientes as $key => $cliente) {
 							echo '<option value="'.$cliente['id'].'">'.$cliente['nombre'].'</option>';
 						}
