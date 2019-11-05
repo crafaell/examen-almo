@@ -156,11 +156,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    $('#tbl_facturas').DataTable();
 	});
 
+	/*Funcion que muestra un mensaje previo a la anulación de una factura*/
 	function FacturaAnular(_factura_id, _numero, _fecha){
 		var mensaje = '<h4>Confirme la anulación</h4><hr><div>Esta seguro de querer anular la factura numero <b>'+_numero+'</b> de fecha <b>'+_fecha+'</b>?.</div><hr><input type="button" class="btn btn-danger" onclick="FacturaAnularConfirmar('+_factura_id+');" value="Anular">';
 		AbrirAlerta(mensaje, 'auto','auto');
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del la factura para su anulacion*/
 	function FacturaAnularConfirmar(_factura_id){
 		$.ajax({
             url: "factura_anular",

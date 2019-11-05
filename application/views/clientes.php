@@ -143,6 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    $('#tbl_clientes').DataTable();
 	});
 
+	/*Funcion que muestra un formulario para agregar un nuevo cliente*/
 	function ClienteAgregar(){
         var form = `<div class="col-12">
         				<h3>Agregar Cliente</h3>
@@ -172,6 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         AbrirAlerta(form, 'auto', '40%');
 	}
 
+	/*Funcion que realiza una peticion Ajax con los datos del cliente para agregar uno nuevo*/
 	function ClienteAgregarConfirmar(_cliente_id){
 		$.ajax({
             url: "cliente_agregar",
@@ -203,6 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del cliente para obtener su informacion y mostrarla para su edición*/
 	function ClienteEditar(_cliente_id){
 		$.ajax({
             url: "cliente_obtener",
@@ -254,6 +257,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que realiza una peticion Ajax con los datos del cliente para modificar informacion*/
 	function ClienteEditarConfirmar(_cliente_id){
 		$.ajax({
             url: "cliente_editar",
@@ -286,11 +290,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que muestra un mensaje de confirmación previo a la eliminación*/
 	function ClienteEliminar(_cliente_id, _nombre){
 		var mensaje = '<div>Esta seguro de querer elminar el cliente '+_nombre+'?.</div><hr><input type="button" class="btn btn-danger" onclick="ClienteEliminarConfirmar('+_cliente_id+');" value="Eliminar">';
 		AbrirAlerta(mensaje, 'auto','auto');
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del cliente para la eliminacion*/
 	function ClienteEliminarConfirmar(_cliente_id){
 		$.ajax({
             url: "cliente_eliminar",

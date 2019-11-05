@@ -143,6 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    $('#tbl_productos').DataTable();
 	});
 
+	/*Funcion que muestra un formulario para agregar un nuevo producto con todas las validaciones de tipo de dato*/
 	function ProductoAgregar(){
         var form = `<div class="col-12">
         				<h3>Agregar Producto</h3>
@@ -172,6 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         AbrirAlerta(form, 'auto', '40%');
 	}
 
+	/*Funcion que realiza una peticion Ajax con los datos del producto para agregar uno nuevo*/
 	function ProductoAgregarConfirmar(_producto_id){
 		$.ajax({
             url: "producto_agregar",
@@ -203,6 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del producto para obtener su informacion y permitir modificarla con todas las validaciones segun el tipo de dato*/
 	function ProductoEditar(_producto_id){
 		$.ajax({
             url: "producto_obtener",
@@ -254,6 +257,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que realiza una peticion Ajax con los datos del producto para modificarlos segun su id*/
 	function ProductoEditarConfirmar(_producto_id){
 		$.ajax({
             url: "producto_editar",
@@ -286,11 +290,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que muestra un mensaje de advertencia previo a confirmar la eliminacion*/
 	function ProductoEliminar(_producto_id, _nombre){
 		var mensaje = '<div>Esta seguro de querer elminar el producto '+_nombre+'?.</div><hr><input type="button" class="btn btn-danger" onclick="ProductoEliminarConfirmar('+_producto_id+');" value="Eliminar">';
 		AbrirAlerta(mensaje, 'auto','auto');
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del producto para su eliminación logica*/
 	function ProductoEliminarConfirmar(_producto_id){
 		$.ajax({
             url: "producto_eliminar",
@@ -319,6 +325,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 	}
 
+	/*Funcion que verifica que el campo de texto del precio del producto siempre tenga 2 decimales*/
 	function MonedaValidar(){
 		var precio = parseFloat($('#txt_precio').val());
 		$('#txt_precio').val(precio.toFixed(2));

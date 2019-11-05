@@ -149,6 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	var productos_agregados = [];
 	var productos_ids = [];
+	/*Funcion que agrega el producto a una tabla local para realizar la facturación posterior, se almacena localmente el id del producto si no está repetido y se recorre para estructurar la tabla que mostrará la información y los totales*/
 	function ProductoAgregar(){
 		var cantidad = parseInt($('#txt_cantidad').val());
 		if(cantidad > 0){
@@ -201,6 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	}
 
+	/*Funcion que elimina el id del producto localmente para calcular el nuevo total*/
 	function ProductoEliminar(_elemento, _producto_id){
 		$(_elemento).parent().parent().remove();
 		var existe = productos_ids.indexOf(_producto_id.toString());
@@ -212,6 +214,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	}
 
+	/*Funcion que realiza una peticion Ajax con el id del cliente, la fecha y los productos para crear la nueva factura*/
 	function FacturaEnviar(){
 		var fecha = $('#txt_fecha').val();
 		if(fecha !='' && productos_agregados.length > 0){
@@ -256,6 +259,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	}
 
+	/*Funcion que recorre el array de los ids de los productos seleccionados para calcular el total de productos que se facturarán*/
 	function TotalCalcular(){
 		var total = 0;
 		$.each(productos_agregados, function(indice, producto){

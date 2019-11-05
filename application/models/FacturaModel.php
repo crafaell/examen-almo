@@ -91,7 +91,7 @@ class FacturaModel extends CI_Model {
 
     /*Funcion que genera una nueva factura e inserta todos los detalles de factura*/
     public function FacturaAgregar(){
-        //Se verifica la existencia de los productos
+        //Se verifica la existencia de los productos antes de crear la factura y su detalle
         $inexistencias = 0;
         $errores = [];
         $productos = json_decode($_POST['productos']);
@@ -245,6 +245,7 @@ class FacturaModel extends CI_Model {
         return $respuesta;
     }
 
+    /*Funcion que recibe todos los datos del producto, los sanitiza y almacen a en la base de datos*/
     public function ProductoAgregar(){
         $query = 'INSERT INTO producto (nombre, precio, cantidad, estado) VALUES(
                     "'.$this->_Sanitizar($_POST['nombre']).'",
@@ -308,6 +309,7 @@ class FacturaModel extends CI_Model {
         return $respuesta;
     }
 
+   /*Funcion que recibe todos los datos del cliente, los sanitiza y almacen a en la base de datos*/
     public function ClienteAgregar(){
         $query = 'INSERT INTO cliente (nombres, apellidos, nit, estado) VALUES(
                     "'.$this->_Sanitizar($_POST['nombres']).'",
