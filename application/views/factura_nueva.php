@@ -145,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tr>
 							</thead>
 							<tbody>`;
-			$.each(productos_agregados, function(producto, indice){
+			$.each(productos_agregados, function(indice, producto){
 				tabla += `<tr>
 							<td>${i}</td>
 							<td>${producto[1]}</td>
@@ -153,6 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td>${producto[3]}</td>
 							<td><input type="button" value="Eliminar" onclick="ProductoEliminar(this, ${producto[0]});"></td>
 						</tr>`;
+				i++;
 			});
 			tabla += '</tbody></table>';
 			$('#tbl_productos').html(tabla);
@@ -163,8 +164,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	function ProductoEliminar(_elemento, _producto_id){
-		$(_elemento).parent().remove();
-		var existe = productos_ids.indexOf(producto_id);
+		$(_elemento).parent().parent().remove();
+		var existe = productos_ids.indexOf(_producto_id);
 		if(existe > -1){
 			productos_agregados.splice(indice, 1);
 			productos_ids.splice(indice, 1);
