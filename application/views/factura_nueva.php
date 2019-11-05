@@ -125,7 +125,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		if(cantidad > 0){
 			var producto_id = $('#slc_producto').val();
 			var producto_nombre = $("#slc_producto option:selected").text();
-			var producto_precio = $("#slc_producto").attr('data-precio');
+			producto_nombre.split('-');
+			producto_nombre = producto_nombre[0];
+			var producto_precio = $("#slc_producto option:selected").attr('data-precio');
 			if(productos_ids.indexOf(producto_id) > -1){
 				alert('Ese producto ya esta agregado');
 			}
@@ -133,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				productos_ids.push(producto_id);
 				productos_agregados.push([producto_id, producto_nombre, cantidad, producto_precio]);
 			}
-			var i = 0;
+			var i = 1;
 			var tabla = `<table>
 							<thead>
 								<tr>
